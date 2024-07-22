@@ -1,8 +1,9 @@
 import React from "react";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { StyleSheet, View, Text } from "react-native";
+import { View } from "react-native";
 import { Button } from "@rneui/themed";
-const GeneralButton = ({ icon, title, width, marginVertical }) => (
+import Icon from "react-native-vector-icons/FontAwesome";
+
+const GeneralButton = ({ icon, title, width, marginVertical, onPress }) => (
   <View style={{ marginTop: "auto", marginBottom: marginVertical }}>
     <Button
       title={title}
@@ -22,6 +23,7 @@ const GeneralButton = ({ icon, title, width, marginVertical }) => (
         marginHorizontal: 50,
         marginVertical: 10,
       }}
+      onPress={onPress}
     />
   </View>
 );

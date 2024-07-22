@@ -1,28 +1,33 @@
 import React from "react";
-import { Image, ImageBackground, StyleSheet, View, Text } from "react-native";
+import { Image, ImageBackground, StyleSheet, View } from "react-native";
 import GeneralButton from "./GeneralButton";
+import CustomText from "./CustomText"; // Import CustomText component
 
-const SplashScreen = () => {
+const SplashScreen = ({ navigation }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <ImageBackground
         source={require("../assets/splashscreen.png")}
         resizeMode="cover"
-        style={{
-          width: "100%",
-          height: "100%",
-          alignItems: "center",
-          filter: "brightness(0.9)",
-        }}
+        style={styles.imageBackground}
       >
         <Image
           source={require("../assets/splashIcon.png")}
-          style={{ marginTop: 59 }}
+          style={styles.icon}
         />
-        <Image
-          source={require("../assets/titleText.png")}
-          style={{ marginTop: 150 }}
-        />
+
+        <CustomText
+          style={styles.titleText}
+          fontStyle="semiBold" // Choose the desired font style for the title
+        >
+          Gourmet {"\n"}Guide
+        </CustomText>
+        <CustomText
+          style={styles.text}
+          fontStyle="regular" // Choose the desired font style for the title
+        >
+          One Click To Tasty!!!
+        </CustomText>
 
         <GeneralButton
           title="Get Started"
@@ -34,6 +39,7 @@ const SplashScreen = () => {
           }}
           width={200}
           marginVertical={60}
+          onPress={() => navigation.navigate("SignUp")} // Navigate to SignUp screen
         />
       </ImageBackground>
     </View>
@@ -44,17 +50,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  image: {
-    flex: 1,
+  imageBackground: {
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center", // Center content vertically
+  },
+
+  titleText: {
+    marginTop: 100,
+    color: "white", // Ensure text is visible
+    fontSize: 55,
+    textAlign: "center", // Center text horizontally
+    paddingHorizontal: 20,
     justifyContent: "center",
   },
   text: {
-    color: "white",
-    fontSize: 42,
-    lineHeight: 84,
-    fontWeight: "bold",
     textAlign: "center",
-    backgroundColor: "#000000c0",
+    fontSize: 20,
+    color: "white",
+    marginTop: 10,
+    padding: 10,
   },
 });
 
